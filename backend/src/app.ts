@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev')); // log request
 
 // express routers
-app.use('/', indexRouter);
+app.use('/users', indexRouter);
 
 // start
 app.listen(port, () =>
