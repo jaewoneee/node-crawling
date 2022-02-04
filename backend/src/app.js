@@ -1,14 +1,13 @@
 import express from "express";
-import http from "http";
 import bodyParser from "body-parser";
 import detectPort from "detect-port";
 import morgan from "morgan";
 import cors from "cors";
 
-import indexRouter from './routes/index';
+import indexRouter from './routes/user';
 
 // server setup
-let port: any;
+let port;
 async function configServer() {
   port = 8080 || (await detectPort(8080));
 }
