@@ -1,56 +1,77 @@
 import express from "express";
-import axios from 'axios';
 import cheerio from 'cheerio';
-import { text } from "cheerio/lib/api/manipulation";
+import {getUserInfo} from "../api/index"
+
 const router = express.Router();
 
 router.get('/:id', (req, res) => {
-    const getUserInfo = async () => {
-        const userName = encodeURI(req.params.id);  // 유저의 캐릭터명
-        try {
-            return await axios.get(`https://lostark.game.onstove.com/Profile/Character/${userName}`);
-        } catch (err) {
-            console.error(err);
-        }
-    }
+    const userName = encodeURI(req.params.id);  // 유저의 캐릭터명
 
-    getUserInfo().then(html => {
+    getUserInfo(userName).then(html => {
         const $ = cheerio.load(html?.data, { xmlMode: false });
-        const slot = $('.profile-equipment__slot div'); // 장비 이미지 Element
-        const totalInfo = $('script:not([src])')[0];  // 캐릭터의 전체정보
-        const result = totalInfo.children[0].data;
-        let textTypeData= {
-            EngraveName: [],
-            EquipName: []
+        const totalInfo = JSON.parse(($('script:not([src])')[0].children[0].data).slice(14).replace(/;/gi, ""));  // 캐릭터 전체정보
+        const classes = $('.profile-character-info__img').attr('alt');  // 캐릭터 직업
+        const server = $('.profile-character-info__server').text() // 서버명
+        const battleLevel = $('.profile-character-info__lv').text(); // 캐릭터 레벨(전투레벨) 
+        const expedLevel = $('.level-info__expedition span:nth-child(2)').text() // 원정대 레벨
+        const equipLevel = $('.level-info2__expedition span:nth-child(2)').text(); // 장비레벨
+        const etcInfo = $('.game-info div:not(:last-child) span:nth-child(2)'); // 기타 정보(칭호, 길드, pvp)
+        const territory = $('.game-info__wisdom span:not(:first-child)').text(); // 영지 정보
+        const equipImgSlot = $('.profile-equipment__slot div'); // 장비 이미지 Element
+        const specialEqip = $('.special-info__slot>li') // 특수장비
+        const basicAbility = $('.profile-ability-basic>ul>li')  // 기본 특성
+        const battleAbility = $('.profile-ability-battle>ul>li') // 전투 특성
+        const engraving = $('.profile-ability-engrave ul.swiper-slide li');  // 각인 효과
+
+        console.log(specialEqip);
+        const textTypeData= {
+            engrave: [],
+            equipment: [],
         };
-        let newArray = [];
+        const imgTypeData = {
+            equipImg:[]
+        }
+        
+        // 전체정보 
+        Object.keys(totalInfo).forEach(obj => {
+            if(obj === 'Engrave'){  // 각인
+                Object.keys(totalInfo[obj]).forEach(i => {
+                    const engraveName = totalInfo[obj][i]['Element_000']['value'];
+                    textTypeData['engrave'].push(engraveName);
+                })
+            } else if (obj === 'Equip'){    // 장비
+                Object.keys(totalInfo[obj]).forEach(i => {
+                    if(i.indexOf('Gem') === -1 && totalInfo[obj][i].hasOwnProperty('AvatarAttribute') === false){
+                        // 예시 ) "<P ALIGN='CENTER'><FONT COLOR='#00B0FA'>시간의 반지</FONT></P>"
+                         let equipName = totalInfo[obj][i]['Element_000']['value'];
+                         equipName = equipName.slice(40).replace("</FONT></P>","");
+                         textTypeData['equipment'].push(equipName);
+                    }
+                })
+            }
+           
+        });
+
+        // 게임 내 정보
+        let etcInfoArray = [];
+        etcInfo?.map((i, element)=>{
+            const text = $(element).text();
+            etcInfoArray.push(text);
+       })
 
         //  장비 이미지 
-        slot.map((i, element) => {
+        equipImgSlot.map((i, element) => {
             const src = $(element).children('img').attr('src');
             if (src !== undefined) {
-                newArray.push(src);
+                imgTypeData['equipImg'].push(src);
             } else {
-                newArray.push('undefined');
+                imgTypeData['equipImg'].push('none');
             }
         });
 
-        // 전체 데이터
-        let infoData = result?.slice(14).replace(/;/gi, ""); // validate
-        let preTest = JSON.parse(infoData);
-        let test = [preTest.Engrave, preTest.Equip];
-        let final = [];
-
-        Object.keys(test[1]).forEach(i => {
-            if (i.indexOf('Gem') === -1 && test[1][i].hasOwnProperty('AvatarAttribute') === false) {
-                final.push(test[1][i]['Element_000']['value']);
-            }
-        });
-        textTypeData.EquipName = [...final];
-        console.log(textTypeData);
-        res.send(textTypeData);
+        console.log(textTypeData, imgTypeData);
+       res.send(totalInfo);
     }).catch(err => console.error(err));
-
 
 })
 
