@@ -1,4 +1,4 @@
-
+// string으로 들어온 전체 데이터 JSON 형식으로 변환
 function setTotalInfo(data){
     const isAvailable = data.includes('$.Profile');
     let code;
@@ -21,6 +21,23 @@ function setTotalInfo(data){
     return code;
 }
 
+// 기본특성
+function setAbility(ability, $){
+    const arr = [];
+    
+    ability.map((i, el) => {
+        const obj = {};
+        const item = $(el).children('span');
 
+        if(item.length > 1){
+            obj.key = item[0].children[0].data; // 특성명
+            obj.value = item[1].children[0].data;   // 특성 값
+        }else{
+            obj.value = item[0].children[0].data;   // 특성 값
+        }
+        arr.push(obj);
+    })  
+    return arr;
+}
 
-export {setTotalInfo}
+export {setTotalInfo, setAbility}
