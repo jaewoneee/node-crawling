@@ -30,7 +30,7 @@ function setAbility(ability, $){
         const item = $(el).children('span');
 
         if(item.length > 1){
-            obj.key = item[0].children[0].data; // 특성명
+            obj.title = item[0].children[0].data; // 특성명
             obj.value = item[1].children[0].data;   // 특성 값
         }else{
             obj.value = item[0].children[0].data;   // 특성 값
