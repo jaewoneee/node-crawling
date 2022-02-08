@@ -1,0 +1,85 @@
+@import "mixin.scss";
+
+// Root
+#root{
+    width: 100%;
+    height: 100vh;
+    background: url(../assets/images/artist.png) center no-repeat;
+    background-size: cover;
+    background-color: rgb(20, 20, 20);
+    .App{
+        width: 96%;
+        height: 100%;
+        padding: 2% 0;
+        box-sizing: border-box;
+        margin: 0 auto;
+        position: relative;
+        
+    }
+}
+
+// Header
+.header-wrap{
+    .header-inner{
+        header{
+            display: flex;
+            justify-content: space-between;
+            h1#logo{
+                width: 146px;
+                height: 44px;
+                a{
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    background: url(../assets/images/logo.png) center no-repeat;
+                    text-indent: -9999px;
+                }
+            }
+        }
+    }
+}
+
+// Player
+.player-wrap{
+    display: flex;
+    opacity: 0.7;
+    align-items: center;
+    color: #fff;
+    audio{
+        display: none;
+    }
+    .song-title-box{
+        display: flex;
+        align-items: center;
+        margin-right: 3px;
+        i{
+            display: block;
+            width: 24px;
+            height: 24px;
+            margin-right:3px;
+            background: url(../assets/images/icon.png) no-repeat;
+        }
+        p{
+            font-size: 0.85rem;
+        }
+    }
+    .control-box{
+        width: 84px;
+        margin: 0 auto;
+        button{
+            width: 24px;
+            height: 24px;
+            background: url(../assets/images/icon.png) no-repeat;
+            text-indent: -9999px;
+            margin-left: 4px;
+            @include position;
+        }
+        button.pause-btn{
+            background-position-x: -96px;
+        }
+    }
+}
+
+.main-wrap{
+    
+}

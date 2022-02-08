@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     const userName = encodeURI(req.params.id);  // 유저의 캐릭터명
-
+    
     getUserInfo(userName).then(html => {
         const $ = cheerio.load(html.data, { xmlMode: false });
         const $totalInfo = setTotalInfo($('script:not([src])')[0].children[0].data);  // 캐릭터 전체정보
@@ -88,7 +88,7 @@ router.get('/:id', (req, res) => {
                                 equipment.equipTier = equipTier;
                                 equipment.equipImg = `https://cdn-lostark.game.onstove.com/${equipImg}`;
 
-                                equipName.indexOf('나침반') === -1 && equipName.indexOf('부적') === -1 
+                                equipName.indexOf('나침반') === -1 && equipName.indexOf('부적') === -1 // 해당 키워드가 있으면 특수장비 배열에 push
                                 ? target.equipments.push(equipment)
                                 : target.spEquipments.push(equipment);
                             }

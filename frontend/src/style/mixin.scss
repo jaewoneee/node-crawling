@@ -1,0 +1,7 @@
+@mixin position {
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        background-position-x: #{-24 * $i}px;
+      }
+    }
+}

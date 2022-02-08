@@ -7,27 +7,27 @@ import Starlight from "../assets/music/Starlight.webm";
 
 export const playList = [
     {
-        title:'카단 테마곡 (Kadan Theme)',
+        title:'카단 테마곡',
         value: Kadan
     },
     {
-        title:'몽환의 아스탤지어(Astalgia of Phantasm)',
+        title:'몽환의 아스탤지어',
         value: Astalgia
     },
     {
-        title:'레온하트(Leonhart)',
+        title:'레온하트',
         value: Leonhart
     },
     {
-        title:'대항해(Sailing the Dream)',
+        title:'대항해',
         value: Sailing
     },
     {
-        title:'별모래 해변 (Star Sandy Beach)',
+        title:'별모래 해변',
         value: Beach
     },
     {
-        title:'별빛 등대의 섬(Star Light Island)',
+        title:'별빛 등대의 섬',
         value: Starlight
     }
 ]
