@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/src/assets/music
 /.pnp
 .pnp.js
 
@@ -10,3 +11,4 @@
 
 # production
 /dist
+

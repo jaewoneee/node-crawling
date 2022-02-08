@@ -1,0 +1,93 @@
+
+// font
+@font-face {
+    font-family: "NotoSansKR";
+    src: url('../assets/font/NotoSansKR-Light.otf') format("otf");
+    unicode-range: U+0020-007E;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Roboto";
+    src: url('../assets/font/Roboto-Medium.ttf') format("ttf");
+    font-style: medium;
+    unicode-range: U+0041-005A, U+0061-007A;
+  }
+  @font-face {
+    font-family: "Roboto";
+    src: url('../assets/font/Roboto-Bold.ttf') format("ttf");
+    font-style: bold;
+    unicode-range: U+0041-005A, U+0061-007A;
+  }
+  
+  *, *:before, *:after{
+      box-sizing: border-box;
+  }
+  html{
+      font-size: 15px;
+  }
+  html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      text-size-adjust: none;
+      font-family: "NotoSansKR","Roboto", sans-serif;
+  }
+  
+  footer, header, nav, section, main{
+      display: block;
+  }
+  
+  body{
+      line-height: 1;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar{
+          display: none;
+      }
+  }
+  
+  ol, ul, li{
+      list-style: none;
+  }
+  
+  blockquote, q{
+      quotes: none;
+  }
+  
+  blockquote:before, blockquote:after, q:before, q:after{
+      content: '';
+      content: none;
+  }
+  
+  table{
+      border-collapse: collapse;
+      border-spacing: 0;
+  }
+  
+  input{
+      -webkit-appearance: none;
+      border-radius: 0;
+      font-family: "NotoSansKR","Roboto", sans-serif;
+      &[type=file]{
+          display: none;
+      }
+  }
+  a{
+    text-decoration: none;
+  }
+  a:focus,
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+  button{
+      border:0;
+      padding: 0;
+      font-family: "NotoSansKR","Roboto", sans-serif;
+      background-color: transparent;
+      cursor: pointer;
+  }
