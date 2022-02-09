@@ -10,9 +10,12 @@ import { User }from './pages/UserPage';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Main />
-      <User />
+      <div className='bg'></div>
+      <div className="inner">
+        <Header />
+        <Main />
+        <User />
+      </div>
     </div>
   );
 }

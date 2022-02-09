@@ -4,30 +4,35 @@ import Leonhart from "../assets/music/Leonhart.mp3";
 import Sailing from "../assets/music/Sailing.mp3";
 import Beach from "../assets/music/Beach.mp3";
 import Starlight from "../assets/music/Starlight.webm";
+import Swords from "../assets/music/Swords.mp3"
 
 export const playList = [
     {
-        title:'카단 테마곡',
+        title:'Kadan Theme',
         value: Kadan
     },
     {
-        title:'몽환의 아스탤지어',
+        title:'Astalgia of Phantasm',
         value: Astalgia
     },
     {
-        title:'레온하트',
-        value: Leonhart
+        title:'Swords Crossed',
+        value:Swords
     },
     {
-        title:'대항해',
+        title:'Bon Voyage',
         value: Sailing
     },
     {
-        title:'별모래 해변',
+        title:'Leonhart',
+        value: Leonhart
+    },
+    {
+        title:'Star Sandy Beach',
         value: Beach
     },
     {
-        title:'별빛 등대의 섬',
+        title:'Star Light Island',
         value: Starlight
     }
 ]

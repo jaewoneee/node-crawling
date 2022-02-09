@@ -2,25 +2,35 @@
  @font-face {
     font-family: "NotoSansKR";
     src: url('../assets/font/NotoSansKR-Light.otf') format("otf");
-    font-style: 300;
+    font-weight: 300;
   }
 
   @font-face {
     font-family: "NotoSansKR";
     src: url('../assets/font/NotoSansKR-Medium.otf') format("otf");
-    font-style: 400;
+    font-weight: 400;
   }
 
   @font-face {
     font-family: "NotoSansKR";
     src: url('../assets/font/NotoSansKR-Regular.otf') format("otf");
-    font-style: 500;
+    font-weight: 500;
   }
   
   @font-face {
     font-family: "NotoSansKR";
     src: url('../assets/font/NotoSansKR-Bold.otf') format("otf");
-    font-style: 600;
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "NanumMyeongjo";
+    src: url('../assets/font/NanumMyeongjo-Regular.ttf') format("ttf");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "NanumMyeongjo";
+    src: url('../assets/font/NanumMyeongjo-Bold.ttf') format("ttf");
+    font-weight: 600;
   }
 
   *, *:before, *:after{
@@ -78,6 +88,7 @@
       border-radius: 0;
       border:0;
       font-family: "NotoSansKR", sans-serif;
+      letter-spacing: -0.05rem;
       &[type=file]{
           display: none;
       }
@@ -96,5 +107,5 @@
       font-family: "NotoSansKR", sans-serif;
       background-color: transparent;
       cursor: pointer;
-      letter-spacing: -0.06rem;
+      letter-spacing: -0.05rem;
   }

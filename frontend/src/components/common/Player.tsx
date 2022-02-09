@@ -8,8 +8,7 @@ export const Player = () =>{
     const handlePlayer = useCallback((type:string) => {
         switch (type) {
             case 'play':
-                audioRef.current?.play();
-                setPlayState(true);
+                playMusic();
                 break;
             case 'pause':
                 audioRef.current?.pause();
@@ -21,16 +20,17 @@ export const Player = () =>{
                 }else if (track === playList.length - 1){
                     setTrack(0);
                 }
-                autoPlay();
+                playMusic();
                 break;
             case 'prev':
                 if(track > 0) setTrack(track - 1);
-                autoPlay();
+                playMusic();
                 break;
         }
        }, [track]);
     
-    function autoPlay(){
+    function playMusic(){
+        setPlayState(true);
         setTimeout(() => {
             audioRef.current?.play();
         }, 500);

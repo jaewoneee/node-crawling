@@ -1,19 +1,32 @@
 @import "mixin.scss";
 
+// common
+%icon-btn{
+    width: 24px;
+    height: 24px;
+    text-indent: -9999px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 // Root
 #root{
     width: 100%;
     height: 100vh;
-    background: url(../assets/images/artist.png) center no-repeat;
+    background: url(../assets/images/bg.jpg) center no-repeat;
     background-size: cover;
-    background-color: rgb(20, 20, 20);
     .App{
-        width: 96%;
+        width: 100%;
         height: 100%;
-        padding: 2% 0;
         box-sizing: border-box;
         margin: 0 auto;
         position: relative;
+        .inner{
+            width: 96%;
+            height: 96%;
+            margin: 0 auto;
+        }
         
     }
 }
@@ -21,6 +34,7 @@
 // Header
 .header-wrap{
     .header-inner{
+        padding-top: 2%;
         header{
             display: flex;
             justify-content: space-between;
@@ -31,12 +45,19 @@
                     display: inline-block;
                     width: 100%;
                     height: 100%;
-                    background: url(../assets/images/logo.png) center no-repeat;
+                    background-image: url(../assets/images/logo.png);
                     text-indent: -9999px;
                 }
             }
         }
     }
+}
+
+// Main
+.main-wrap{
+    width: 100%;
+    height: calc(98% - 44px);
+    position: relative;
 }
 
 // Player
@@ -56,7 +77,6 @@
             display: block;
             width: 24px;
             height: 24px;
-            margin-right:3px;
             background: url(../assets/images/icon.png) no-repeat;
         }
         p{
@@ -67,12 +87,10 @@
         width: 84px;
         margin: 0 auto;
         button{
-            width: 24px;
-            height: 24px;
-            background: url(../assets/images/icon.png) no-repeat;
-            text-indent: -9999px;
+            background-image: url(../assets/images/icon.png);
             margin-left: 4px;
-            @include position;
+            @include player-btn;
+            @extend %icon-btn;
         }
         button.pause-btn{
             background-position-x: -96px;
@@ -80,6 +98,44 @@
     }
 }
 
-.main-wrap{
-    
+.search-box{
+    position:relative;
+    width: 80%;
+    max-width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h2{
+        font-family: "NanumMyeongjo", sans-serif;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #fff;
+
+    }
+    .search{
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        border-radius: 30px;
+        justify-content: space-between;
+        background-color: rgba(0, 0, 0, 0.541);
+        input{
+            &::-webkit-input-placeholder{
+                color: rgba(255, 255, 255, 0.856);
+            }
+            display: block;
+            width: calc(100% - 34px);
+            height: 100%;
+            font-size: 1rem;
+            color: #fff;
+            background-color: transparent
+            
+            
+        }
+        button{
+            background: url(../assets/images/search.png);
+            @extend %icon-btn;
+        }
+}
 }
