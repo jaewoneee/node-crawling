@@ -9,6 +9,10 @@
     background-repeat: no-repeat;
 }
 
+%wrap{
+    width: 100%;
+    height: calc(98% - 88px);
+}
 
 // Root
 #root{
@@ -24,7 +28,7 @@
         position: relative;
         .inner{
             width: 96%;
-            height: 96%;
+            height: 100%;
             margin: 0 auto;
         }
         
@@ -55,8 +59,7 @@
 
 // Main
 .main-wrap{
-    width: 100%;
-    height: calc(98% - 44px);
+    @extend %wrap;
     position: relative;
 }
 
@@ -131,11 +134,18 @@
             color: #fff;
             background-color: transparent
             
-            
         }
         button{
             background: url(../assets/images/search.png);
             @extend %icon-btn;
         }
+    }
 }
+
+.user-wrap{
+    @extend %wrap;
+    color: #fff;
+    .user-inner{
+        padding-top: 2rem;
+    }
 }

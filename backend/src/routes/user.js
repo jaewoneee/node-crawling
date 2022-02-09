@@ -50,7 +50,6 @@ router.get('/:id', (req, res) => {
         /**
          * case 1. Success
          * case 2. [code 0] : 존재하지 않는 캐릭터 
-         * case 3. [code 1] : 캐릭터는 존재하지만, 데이터 부족.
          */
         if (typeof $totalInfo === 'object'){
             // 전체 정보 
@@ -96,13 +95,11 @@ router.get('/:id', (req, res) => {
                         break;
                 }
             });
-            res.status(202).send(info);
-        }else if($totalInfo === 0){
-            res.status(403).json({msg:'User does not exist.'});
-        }else{
-            res.status(202).send(info);
+            
+        }else if($totalInfo === false){
+            return res.status(204).json({msg:'User does not exist.'});
         }
-
+        return res.status(202).send(info);
     }).catch(err => console.error(err));
 
 })

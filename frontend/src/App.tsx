@@ -1,3 +1,4 @@
+import {Route, Routes} from 'react-router-dom'
 // style
 import './style/reset.scss';
 import './style/style.scss';
@@ -10,11 +11,12 @@ import { User }from './pages/UserPage';
 function App() {
   return (
     <div className="App">
-      <div className='bg'></div>
       <div className="inner">
         <Header />
-        <Main />
-        <User />
+          <Routes>
+            <Route path='/' element={<Main/>}/>
+            <Route path='/users/:username' element={<User/>}/>
+          </Routes>
       </div>
     </div>
   );
