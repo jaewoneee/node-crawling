@@ -18,14 +18,26 @@
 #root{
     width: 100%;
     height: 100vh;
-    background: url(../assets/images/bg.jpg) center no-repeat;
-    background-size: cover;
+    overflow: hidden;
     .App{
         width: 100%;
         height: 100%;
         box-sizing: border-box;
         margin: 0 auto;
         position: relative;
+        &.sub{
+            background: url(../assets/images/bg.jpg) center no-repeat;
+            background-size: cover;
+        }
+        video{
+            min-width: 100%;
+            min-height: 100%;
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
         .inner{
             width: 96%;
             height: 100%;
@@ -110,16 +122,17 @@
     transform: translate(-50%, -50%);
     h2{
         font-family: "NanumMyeongjo", sans-serif;
-        font-size: 2.5rem;
+        font-size: 2.6rem;
         text-align: center;
         margin-bottom: 1.5rem;
         color: #fff;
-
+        font-weight: 600;
+        text-shadow: 0px 2px 5px rgba(0,0,0,0.45);
     }
     .search{
         display: flex;
         align-items: center;
-        padding: 15px 20px;
+        padding: 1.2rem 1.3rem;
         border-radius: 30px;
         justify-content: space-between;
         background-color: rgba(0, 0, 0, 0.541);

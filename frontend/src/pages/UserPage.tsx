@@ -18,7 +18,7 @@ export const User = () =>{
     return(
         <div className="user-wrap">
             <div className="user-inner">
-                <div className="default-info-box">
+                <div className="user-info-box">
                     <h2>기본 정보</h2>
                     <ul>
                         <li>

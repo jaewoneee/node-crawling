@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Player } from './Player'
 
 export const Header = () => {
@@ -6,7 +7,7 @@ return (
         <div className="header-inner">
             <header>
                 <h1 id="logo">
-                    <a href="/">홈으로</a>
+                    <Link to='/' />
                 </h1>
                 <Player />
             </header>
