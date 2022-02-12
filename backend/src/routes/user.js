@@ -12,8 +12,9 @@ router.get('/:id', (req, res) => {
         const $ = cheerio.load(html.data, { xmlMode: false });
         const $totalInfo = setTotalInfo($('script:not([src])')[0].children[0].data);  // 캐릭터 전체정보
         const $etcInfo = $('.game-info div:not(:last-child)'); // 기타 정보(칭호, 길드, pvp)
-        const $classes = $('.profile-character-info__img').attr('alt');  // 캐릭터 직업
-        const $server = $('.profile-character-info__server').text() // 서버명
+        const $classes = $('.profile-character-info__img').attr('alt');  // 캐릭터 직업명
+        const $classImg = $('.profile-character-info__img').attr('src'); // 직업 아이콘
+        const $server = $('.profile-character-info__server').text().replace('@','') // 서버명
         const $territoryName = $('.game-info__wisdom span:nth-child(3)').text(); // 영지명
         const $battleLevel = $('.profile-character-info__lv').text(); // 캐릭터 레벨(전투레벨) 
         const $expedLevel = $('.level-info__expedition span:nth-child(2)').text() // 원정대 레벨
@@ -29,7 +30,10 @@ router.get('/:id', (req, res) => {
             character:{
                 username:decodeURI(userName),
                 server:$server,
-                class:$classes,
+                class:{
+                    title: $classes,
+                    value: $classImg
+                },
                 territory:$territoryName,
                 level:{
                     battleLevel:$battleLevel,
@@ -61,9 +65,11 @@ router.get('/:id', (req, res) => {
                             const engrave = {};
                             const engraveName = $totalInfo[obj][p]['Element_000']['value'];  // 직업 각인명
                             const engraveImg = $engraveImgSlot[i].children[0]['attribs'].src;   // 직업 각인 이미지
-                            
+                            const engraveExp = $totalInfo[obj][p]['Element_002']['value']; // 각인 설명
+
                             engrave.engraveName = engraveName;
                             engrave.engraveImg = engraveImg;
+                            engrave.engraveExp = engraveExp.replace(/[<][^>]*[>]/g,""); // 태그제거
 
                             target.engrave.push(engrave);
                         });
@@ -72,19 +78,15 @@ router.get('/:id', (req, res) => {
                     case 'Equip':
                         Object.keys($totalInfo[obj]).forEach((p, i) => {
                             if(p.indexOf('Gem') === -1 && $totalInfo[obj][p].hasOwnProperty('AvatarAttribute') === false){
-                                let equipName = $totalInfo[obj][p]['Element_000']['value']; // 장비명
-                                let equipRank = $totalInfo[obj][p]['Element_001']['value']['leftStr0']; // 장비 등급
-                                let equipTier = $totalInfo[obj][p]['Element_001']['value']['leftStr2']; // 장비 티어
-                                let equipImg = $totalInfo[obj][p]['Element_001']['value']['slotData']['iconPath']; // 장비 이미지
+                                const equipName = $totalInfo[obj][p]['Element_000']['value']; // 장비명
+                                const equipRank = $totalInfo[obj][p]['Element_001']['value']['leftStr0']; // 장비 등급
+                                const equipTier = $totalInfo[obj][p]['Element_001']['value']['leftStr2']; // 장비 티어
+                                const equipImg = $totalInfo[obj][p]['Element_001']['value']['slotData']['iconPath']; // 장비 이미지
                                 const equipment = {};
-                               
-                                equipName = equipName.slice(40).replace("</FONT></P>","");
-                                equipRank = equipRank.slice(38).replace("</FONT></FONT>","");
-                                equipTier = equipTier.slice(16).replace("</FONT>","");
-                                
-                                equipment.equipName = equipName;
-                                equipment.equipRank = equipRank;
-                                equipment.equipTier = equipTier;
+
+                                equipment.equipName = equipName.replace(/[<][^>]*[>]/g,"");;
+                                equipment.equipRank = equipRank.replace(/[<][^>]*[>]/g,"");
+                                equipment.equipTier = equipTier.replace(/[<][^>]*[>]/g,"");
                                 equipment.equipImg = `https://cdn-lostark.game.onstove.com/${equipImg}`;
 
                                 equipName.indexOf('나침반') === -1 && equipName.indexOf('부적') === -1 // 해당 키워드가 있으면 특수장비 배열에 push
