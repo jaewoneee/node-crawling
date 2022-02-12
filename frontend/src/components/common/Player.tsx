@@ -2,9 +2,9 @@ import { useState, useCallback, useRef } from "react";
 import {playList} from "../../data/playlist";
 
 export const Player = () =>{
-    const [track, setTrack] = useState(0);
-    const [play, setPlayState] = useState(false);
-    const audioRef = useRef<HTMLAudioElement>(null);
+    const [track, setTrack] = useState(0);  // 트랙
+    const [play, setPlayState] = useState(false);   // 재생상태
+    const audioRef = useRef<HTMLAudioElement>(null);    // dheldh 
     const handlePlayer = useCallback((type:string) => {
         switch (type) {
             case 'play':
@@ -23,7 +23,11 @@ export const Player = () =>{
                 playMusic();
                 break;
             case 'prev':
-                if(track > 0) setTrack(track - 1);
+                if(track > 0) {
+                    setTrack(track - 1)
+                }else if (track === 0){
+                    setTrack(playList.length-1)
+                }
                 playMusic();
                 break;
         }
