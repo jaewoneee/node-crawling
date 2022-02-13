@@ -34,4 +34,9 @@ function setAbility(ability, $){
     return arr;
 }
 
-export {setTotalInfo, setAbility}
+// 데이터 내의 태그 없애기
+function deleteTag(str){
+    return str.replace(/[<][^>]*[>]/g,"")
+}
+
+export {setTotalInfo, setAbility, deleteTag}

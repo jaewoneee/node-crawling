@@ -27,11 +27,13 @@ interface EquipInfo{
     equipName: string;
     equipRank: string;
     equipTier: string;
+    iconGrade:number;
 }
 
 interface EngraveInfo{
     engraveImg:string;
     engraveName:string;
+    engraveExp:string;
 }
 
 interface LevelInfo{
