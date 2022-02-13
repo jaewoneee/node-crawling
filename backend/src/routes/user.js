@@ -1,7 +1,7 @@
 import express from "express";
 import cheerio from 'cheerio';
 import {getUserInfo} from "../api/index"
-import {setTotalInfo, setAbility} from "../utils/index";
+import {setTotalInfo, setAbility, deleteTag} from "../utils/index";
 
 const router = express.Router();
 
@@ -69,7 +69,7 @@ router.get('/:id', (req, res) => {
 
                             engrave.engraveName = engraveName;
                             engrave.engraveImg = engraveImg;
-                            engrave.engraveExp = engraveExp.replace(/[<][^>]*[>]/g,""); // 태그제거
+                            engrave.engraveExp = deleteTag(engraveExp);
 
                             target.engrave.push(engrave);
                         });
@@ -82,14 +82,16 @@ router.get('/:id', (req, res) => {
                                 const equipRank = $totalInfo[obj][p]['Element_001']['value']['leftStr0']; // 장비 등급
                                 const equipTier = $totalInfo[obj][p]['Element_001']['value']['leftStr2']; // 장비 티어
                                 const equipImg = $totalInfo[obj][p]['Element_001']['value']['slotData']['iconPath']; // 장비 이미지
+                                const iconGrade = $totalInfo[obj][p]['Element_001']['value']['slotData']['iconGrade']  // 장비 등급 식별용 
                                 const equipment = {};
 
-                                equipment.equipName = equipName.replace(/[<][^>]*[>]/g,"");;
-                                equipment.equipRank = equipRank.replace(/[<][^>]*[>]/g,"");
-                                equipment.equipTier = equipTier.replace(/[<][^>]*[>]/g,"");
+                                equipment.equipName = deleteTag(equipName);
+                                equipment.equipRank = deleteTag(equipRank);
+                                equipment.equipTier = deleteTag(equipTier);
                                 equipment.equipImg = `https://cdn-lostark.game.onstove.com/${equipImg}`;
+                                equipment.iconGrade = iconGrade;
 
-                                equipName.indexOf('나침반') === -1 && equipName.indexOf('부적') === -1 // 해당 키워드가 있으면 특수장비 배열에 push
+                                equipName.indexOf('나침반') === -1 && equipName.indexOf('부적') === -1 && equipName.indexOf('문장') === -1  // 해당 키워드가 있으면 특수장비 배열에 push
                                 ? target.equipments.push(equipment)
                                 : target.spEquipments.push(equipment);
                             }
