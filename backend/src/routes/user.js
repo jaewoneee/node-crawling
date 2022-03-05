@@ -1,5 +1,5 @@
 import express from "express";
-import cheerio from 'cheerio';
+import cheerio from "cheerio";
 import {getUserInfo} from "../api/index"
 import {setTotalInfo, setAbility, deleteTag} from "../utils/index";
 

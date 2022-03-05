@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchUserInfo } from "../api/index";
-import { Character } from '../types/index'
+import { Character, GuideTypes } from '../types/index'
+import guideData from "../data/guide.json";
 
 export const User = () =>{
     const {username} = useParams<string>(); 
     const [info, setInfo] = useState<Character>();
-
+    const [classname, setClassname]= useState('');
+    const guideList = guideData as GuideTypes;
+    console.log(classname);
+    console.log(guideList[classname]);
     useEffect(() => {
          async function fetchAndSetUser(user:string){
             const { data } = await fetchUserInfo(user);
             setInfo(data);
+            setClassname(data.character.class.title);
          }
          fetchAndSetUser(username!);
     }, [username]);
-    
+
     return(
         <div className="user-wrap">
             <div className="user-inner">
@@ -46,6 +51,28 @@ export const User = () =>{
                         <p>{info?.character.level.equipLevel}</p>
                         </div>
                     </li>
+                    {
+                        info?.character.etc.map((val, i) => {
+                            return <li>
+                                        <div>
+                                            <h4>{info?.character.etc[i].title}</h4>
+                                            <p>{info?.character.etc[i].value}</p>
+                                        </div>
+                                    </li>
+                        })
+                    }
+                </ul>
+                <ul className="user-card-box">
+                    {
+                        info?.character.battleAbility.map((val, i) => {
+                            return <li>
+                                        <div>
+                                            <h4>{info?.character.battleAbility[i].title}</h4>
+                                            <p>{info?.character.battleAbility[i].value}</p>
+                                        </div>
+                                    </li>
+                        })
+                    }
                 </ul>
                 <div className="user-list-box">
                     <h3>각인</h3>
@@ -66,10 +93,24 @@ export const User = () =>{
                     </ul>
                 </div>
                 <div className="user-list-box">
+                    <h3>각인 효과</h3>
+                    <ul>
+                        {
+                            info?.character.engraving[0]
+                            ? info.character.engraving.map((val, i) => {
+                                return <li>
+                                            <p>{info?.character.engraving[i].value}</p>
+                                        </li>
+                            })
+                            : '내용이 없습니다'
+                        }
+                    </ul>
+                </div>
+                <div className="user-list-box">
                     <h3>장비</h3>
                     <ul>
                         {
-                            info?.character.spEquipments[0]
+                            info?.character.equipments[0]
                             ? info.character.equipments.map((val, i) => {
                                 return <li>
                                             <img src={info?.character.equipments[i].equipImg} className={`grade-${info.character.equipments[i].iconGrade}`}alt="" />
@@ -101,7 +142,23 @@ export const User = () =>{
                             : '내용이 없습니다'
                         }
                     </ul>
-                </div>         
+                </div>  
+                <div className="user-list-box">
+                    <h3> {info?.character.class.title} 가이드 보러가기</h3>
+                    <ul>
+                        {
+                            guideList[classname]
+                            ? guideList[classname].map((val, i) => {
+                                return <li>
+                                            <div>
+                                                <a href={val.url} target="_blank" rel="noreferrer">{val.title}</a>
+                                            </div>
+                                        </li>
+                            })
+                            : <div>nth</div>
+                        }
+                    </ul>
+                </div>  
             </div>
         </div>
     )

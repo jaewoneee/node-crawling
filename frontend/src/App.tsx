@@ -3,9 +3,9 @@ import {Route, Routes, useLocation} from 'react-router-dom'
 import './style/reset.scss';
 import './style/style.scss';
 // pages
+import { Header } from './components/common/Header';
 import { Main } from './pages/MainPage';
 import { User }from './pages/UserPage';
-import { Header } from './components/common/Header';
 //video
 import trailer from './assets/video/trailer.mp4';
 

@@ -42,3 +42,13 @@ interface LevelInfo{
     expedLevel: string;
     territoryLevel: string;
 }
+
+// computed value를 위해 type 사용
+export type GuideTypes = {
+    [key in string] : Guide[]
+}
+
+interface Guide{
+    title: string,
+    url: string
+}

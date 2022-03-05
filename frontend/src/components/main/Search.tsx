@@ -6,7 +6,7 @@ export const Search = () => {
     const navigate = useNavigate();
     const handleKeyPress = (e:any) => {
         if(e.key === 'Enter')  handleClick();        
-      }
+    }
       
     function handleClick(){
         navigate(`/users/${username}`);
