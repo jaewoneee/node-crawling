@@ -7,7 +7,7 @@ interface CharacterInfo{
     battleAbility: AbilityInfo[];
     class: AbilityInfo;
     engrave: EngraveInfo[];
-    engraving: object[];
+    engraving: AbilityInfo[];
     equipments: EquipInfo[];
     etc: AbilityInfo[];
     level: LevelInfo;
