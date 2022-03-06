@@ -139,7 +139,7 @@ export const User = () =>{
                                             </div>
                                         </li>
                             })
-                            : '내용이 없습니다'
+                            : '내용이 없습니다.'
                         }
                     </ul>
                 </div>  
@@ -147,13 +147,14 @@ export const User = () =>{
                     <h3> {info?.character.class.title} 가이드 보러가기</h3>
                     <ul>
                         {
-                           guides.map((val, i) => {
+                            guides
+                            ? guides.map((val, i) => {
+                               
                                 return <li>
-                                            <div>
                                                 <a href={val.url} target="_blank" rel="noreferrer">{val.title}</a>
-                                            </div>
                                         </li>
                             })
+                            : '준비 중입니다.'
                         }
                     </ul>
                 </div>  

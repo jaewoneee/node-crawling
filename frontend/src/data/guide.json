@@ -1,11 +1,11 @@
 {
     "소서리스": [
         {
-            "title": "극신즉발환류 가이드",
+            "title": "극신즉발환류 소서리스 가이드",
             "url": "https://www.inven.co.kr/board/lostark/5770/40733"
         },
         {
-            "title": "캐스팅 환류 가이드",
+            "title": "캐스팅 환류 소서리스 가이드",
             "url": "https://www.inven.co.kr/board/lostark/5770/37228"
         },
         {
@@ -31,6 +31,200 @@
         {
             "title": "기술 스카우터 가이드",
             "url": "https://www.inven.co.kr/board/lostark/5631/38142"
+        }
+    ],
+    "디스트로이어": [
+        {
+            "title": "분노의 망치 디스트로이어 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5343/75397"
+        },
+        {
+            "title": "중력 수련 디스트로이어 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5343/88008"
+        }
+    ],
+    "워로드": [
+        {
+            "title": "전투 태세 워로드 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5339/98850"
+        },
+        {
+            "title": "고독한 기사 디스트로이어 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5339/112607"
+        }
+    ],
+    "버서커": [
+        {
+            "title": "6악몽 치신 광기버서커 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5341/71572"
+        },
+        {
+            "title": "비기 버서커 셋팅 및 공략",
+            "url": "https://www.inven.co.kr/board/lostark/5341/63757"
+        },
+        {
+            "title": "광기 버서커 셋팅 및 공략",
+            "url": "https://www.inven.co.kr/board/lostark/5341/73417"
+        }
+    ],
+    "홀리나이트": [
+        {
+            "title": "홀나 세팅 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5558/36403"
+        },
+        {
+            "title": "딜홀리나이트 학개론",
+            "url": "https://www.inven.co.kr/board/lostark/5558/44157"
+        }
+    ],
+    "배틀마스터": [
+        {
+            "title": "초심배마 핵심가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5342/49305"
+        },
+        {
+            "title": "특신 풍신 2오의 배마 정리",
+            "url": "https://www.inven.co.kr/board/lostark/5342/80049"
+        },
+        {
+            "title": "배마 셋팅 정리 / for 뉴비 및 유입 배마",
+            "url": "https://www.inven.co.kr/board/lostark/5342/86448"
+        }
+    ],
+    "인파이터": [
+        {
+            "title": "인파학개론",
+            "url": "https://www.inven.co.kr/board/lostark/5340/67236"
+        }
+    ],
+    "기공사": [
+        {
+            "title": "뉴비들을 위한 금강선공(특화) 및 직각 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5344/40529"
+        },
+        {
+            "title": "하익 뉴비분들을 위한 역천 기공 공략!",
+            "url": "https://www.inven.co.kr/board/lostark/5344/69170"
+        }
+    ],
+    "창술사": [
+        {
+            "title": "5난 2집 창술사 세팅 및 운용 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5434/50792"
+        },
+        {
+            "title": "지배속속 스킬트리,트포작,보석작 및 후기 공유",
+            "url": "https://www.inven.co.kr/board/lostark/5434/50681"
+        }
+    ],
+    "스트라이커": [
+        {
+            "title": "입문자를 위한 일격 스트라이커 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5709/24053"
+        },
+        {
+            "title": "일격 특화 수치별 추천 조합 및 특화, 풍요, 트포별 4버블 스킬 조합 정보",
+            "url": "https://www.inven.co.kr/board/lostark/5709/25507"
+        }
+    ],
+    "데빌헌터": [
+        {
+            "title": "10월 이후 유입을 위한 핸드거너 공략",
+            "url": "https://www.inven.co.kr/board/lostark/5345/82912"
+        },
+        {
+            "title": "주관적 강무데빌헌터 글",
+            "url": "https://www.inven.co.kr/board/lostark/5345/89652"
+        }
+    ],
+    "블래스터": [
+        {
+            "title": "신속 블래스터 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5349/59501"
+        },
+        {
+            "title": "특화 블래스터 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5349/76249"
+        }
+    ],
+    "호크아이": [
+        {
+            "title": "극신속 환각 두동호크 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5347/84383"
+        },
+        {
+            "title": "악몽 죽습, 악몽 쌍직각 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5347/90411"
+        }
+    ],
+    "건슬링어": [
+        {
+            "title": "피스메이커 최종공략",
+            "url": "https://www.inven.co.kr/board/lostark/5708/9071"
+        },
+        {
+            "title": "사시 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5708/11565"
+        }
+    ],
+    "바드": [
+        {
+            "title": "극신속바드 정보집",
+            "url": "https://www.inven.co.kr/board/lostark/5350/104724"
+        },
+        {
+            "title": "최신★바드분들을 위한 스킬 및 Tip",
+            "url": "https://www.inven.co.kr/board/lostark/5350/57632"
+        }
+    ],
+    "서머너": [
+        {
+            "title": "서머너 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5348/74486"
+        },
+        {
+            "title": "특신서머너 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5348/92961"
+        }
+    ],
+    "아르카나": [
+        {
+            "title": "황후 아르카나 종합 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5346/77994"
+        },
+        {
+            "title": "황제 아르카나(314) 입문 및 공략",
+            "url": "https://www.inven.co.kr/board/lostark/5346/89227"
+        }
+    ],
+    "블레이드": [
+        {
+            "title": "잔재 블레이드 세팅/스킬트리/딜사이클 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5497/69654"
+        },
+        {
+            "title": "버스트 블레이드 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5497/72325"
+        }
+    ],
+    "데모닉": [
+        {
+            "title": "억모닉 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5498/22471"
+        },
+        {
+            "title": "★ 멈출 수 없는 충동 ★",
+            "url": "https://www.inven.co.kr/board/lostark/5498/25352"
+        }
+    ],
+    "리퍼": [
+        {
+            "title": "갈증 리퍼 개론",
+            "url": "https://www.inven.co.kr/board/lostark/5647/30467"
+        },
+        {
+            "title": "최신 달소리퍼 가이드",
+            "url": "https://www.inven.co.kr/board/lostark/5647/57881"
         }
     ]
 }
