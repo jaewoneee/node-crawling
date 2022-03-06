@@ -48,7 +48,7 @@ export type GuideTypes = {
     [key in string] : Guide[]
 }
 
-interface Guide{
+export interface Guide{
     title: string,
     url: string
 }

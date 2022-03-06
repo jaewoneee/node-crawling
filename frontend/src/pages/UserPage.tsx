@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchUserInfo } from "../api/index";
-import { Character, GuideTypes } from '../types/index'
+import { Character, GuideTypes, Guide } from '../types/index'
 import guideData from "../data/guide.json";
 
 export const User = () =>{
     const {username} = useParams<string>(); 
     const [info, setInfo] = useState<Character>();
-    const [classname, setClassname]= useState('');
-    const guideList = guideData as GuideTypes;
-    console.log(classname);
-    console.log(guideList[classname]);
+    const [guides, setGuides] = useState<Guide[]>([]);
+    const fetchAndSetData = async(user:string) => {
+        const { data } = await fetchUserInfo(user);
+        const guideList = guideData as GuideTypes;
+
+        setInfo(data);
+        setGuides(guideList[data.character.class.title]);
+    }
+
     useEffect(() => {
-         async function fetchAndSetUser(user:string){
-            const { data } = await fetchUserInfo(user);
-            setInfo(data);
-            setClassname(data.character.class.title);
-         }
-         fetchAndSetUser(username!);
+         fetchAndSetData(username!);
     }, [username]);
 
     return(
@@ -147,15 +147,13 @@ export const User = () =>{
                     <h3> {info?.character.class.title} 가이드 보러가기</h3>
                     <ul>
                         {
-                            guideList[classname]
-                            ? guideList[classname].map((val, i) => {
+                           guides.map((val, i) => {
                                 return <li>
                                             <div>
                                                 <a href={val.url} target="_blank" rel="noreferrer">{val.title}</a>
                                             </div>
                                         </li>
                             })
-                            : <div>nth</div>
                         }
                     </ul>
                 </div>  
